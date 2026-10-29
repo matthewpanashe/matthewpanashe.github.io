@@ -178,19 +178,9 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var
 
 .inline-cta { display: flex; justify-content: center; margin-top: 56px; }
 
-/* Short form — full-width row that scrolls sideways on a loop.
-   Pauses on hover, and when a video is tapped (the iframe takes focus). */
-.shorts-marquee {
-  width: 100vw; margin-left: calc(50% - 50vw);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-}
-.shorts-track { display: flex; width: max-content; animation: marquee 55s linear infinite; }
-.shorts-marquee:hover .shorts-track,
-.shorts-marquee:focus-within .shorts-track { animation-play-state: paused; }
-.shorts-set { display: flex; gap: 22px; padding-right: 22px; }
-.short-card { width: 270px; flex: none; }
+/* Short form — four Shorts side by side */
+.shorts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.shorts .work-meta h3 { overflow-wrap: anywhere; }
 .short-card .work-meta p { flex-direction: column; align-items: flex-start; gap: 2px; }
 
 /* Reviews — vertical testimonial video beside the name */
@@ -301,7 +291,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var
   .review-info { text-align: center; }
   .receipts { flex-direction: column; align-items: center; }
   .receipt { width: 100%; max-width: 420px; flex: none; }
-  .short-card { width: 220px; }
+  .shorts { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: 14px; }
+  .shorts .work-meta h3 { font-size: 16px; }
   .footer { padding: 24px 20px; }
   .socials { width: 100%; gap: 12px; grid-template-columns: repeat(2, 1fr); }
   .social { padding: 26px 10px 22px; }
@@ -309,7 +300,6 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var
   .cta-email { font-size: 16px; word-break: break-all; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track, .shorts-track { animation: none; }
-  .shorts-marquee { overflow-x: auto; }
+  .ticker-track { animation: none; }
   html { scroll-behavior: auto; }
 }
